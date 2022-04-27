@@ -5,9 +5,13 @@ var range = ws.getRange(1, 1); // ou getRange('A1');
 /**
  * WebApp
  */
-
 function doGet(e) {
-  return HtmlService.createHtmlOutputFromFile('Form');
+  return HtmlService.createTemplateFromFile('Formulaire').evaluate();
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
 }
 
 /**
@@ -93,3 +97,13 @@ function getOptions() {
     return row[0];
   })
 }
+
+/**
+ * Get last username
+ */
+function getLastUser(){
+  var lastRow = ws.getLastRow();
+
+  return ws.getRange(lastRow, 2).getValue();
+}
+
