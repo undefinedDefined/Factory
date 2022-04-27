@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <?!= include('Stylesheet') ?>
+</head>
+
+<body class="text-center">
+
+  <main class="inscription">
+    <form>
+      <img class="mb-4" src="https://www.factory.fr/wp-content/themes/norebro-child/images/logo-fixed.svg" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Inscription chez Factory</h1>
+
+      <div class="row g-2 mb-3">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="text" name="userName" class="form-control" placeholder="Username" required>
+            <label for="userName">Nom d'utilisateur</label>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="date" name="birthDate" class="form-control" required>
+            <label for="birthDate">Date de naissance</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-5">
+        <div class="col-md-8">
+          <div class="form-floating">
+            <select name="favMusicType" class="form-select">
+          <option selected>Chargement...</option>
+        </select>
+            <label for="favMusicType">Genre de musique préféré</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input type="text" name="isActive" class="form-control" placeholder="Activité">
+            <label for="isActive">Activité</label>
+          </div>
+        </div>
+      </div>
+
+      <button class="w-100 btn btn-outline-primary" type="submit">Inscription</button>
+      <p class="mt-5 mb-3 text-muted">&copy; Sofiane M</p>
+    </form>
+  </main>
+
+  <div id="modal"></div>
+
+<?!= include('Javascript') ?>
+</body>
+
+</html>
