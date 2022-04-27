@@ -46,7 +46,8 @@ function onOpen() {
  * Trigger to display the form
  */
 function showForm() {
-  var form = HtmlService.createHtmlOutputFromFile('Form').setTitle('Formulaire');
+  var form = HtmlService.createTemplateFromFile('Formulaire').evaluate();
+  form.setTitle('Formulaire');
   // SpreadsheetApp.getUi().showSidebar(form);
   SpreadsheetApp.getUi().showModalDialog(form, 'Formulaire d\'ajout de données');
 }
@@ -106,4 +107,3 @@ function getLastUser(){
 
   return ws.getRange(lastRow, 2).getValue();
 }
-
