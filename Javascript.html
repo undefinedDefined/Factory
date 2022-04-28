@@ -28,7 +28,7 @@
 
   $('form').submit(function(e){
     e.preventDefault();
-    google.script.run.withSuccessHandler(displaySuccesModal).processForm(this);
+    google.script.run.withSuccessHandler(displaySuccesModal).withFailureHandler(displayErrorModal).processForm(this);
     this.reset();
 
   })
@@ -39,7 +39,7 @@
       modal += '<div class="modal-dialog modal-sm">';
       modal += '<div class="modal-content">';
       modal += '<div class="modal-header">';
-      modal += '<h5 class="modal-title" id="exampleModalLabel">Succès</h5>';
+      modal += '<h5 class="modal-title">Succès</h5>';
       modal += '</div>';
       modal += '<div class="modal-body">Utilisateur '+ user +' créé avec succès</div>';
       modal += '</div></div></div>';
@@ -48,6 +48,20 @@
       $('#successModal').modal('show');
 
     }).getLastUser();
+  }
+  
+  function displayErrorModal(){
+    var modal = '<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">';
+    modal += '<div class="modal-dialog modal-sm">';
+    modal += '<div class="modal-content">';
+    modal += '<div class="modal-header">';
+    modal += '<h5 class="modal-title">Erreur</h5>';
+    modal += '</div>';
+    modal += '<div class="modal-body">Une erreur s\'est produite lors de la création de l\'utilisateur.</div>';
+    modal += '</div></div></div>';
+    
+    $('#modal').html(modal);
+    $('#errorModal').modal('show');
   }
 
 </script>
