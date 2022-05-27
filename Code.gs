@@ -61,6 +61,7 @@ function showForm() {
 
 /**
  * Script to process form data
+ * met les elements du formulaire dans le tableur
  */
 function processForm(form) {
   var headers = ws.getRange(1, 1, 1, ws.getLastColumn()).getValues()[0];
