@@ -1,9 +1,13 @@
-var ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1hmt0DZP1XTgYuNcHCGrLFZYqG6pi8veL0C3IkHiFIWo/edit#gid=0');
+// var ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1hmt0DZP1XTgYuNcHCGrLFZYqG6pi8veL0C3IkHiFIWo/edit#gid=0');
+var ss = SpreadsheetApp.getActive();
+// on active l'onglet 'Exercice' ou celui qui est actif si 'Exercice' n'existe pas
 var ws = ss.getSheetByName('Exercice') ?? ss.getActiveSheet();
+// On récupère la ligne (1,1) = A1
 var range = ws.getRange(1, 1); // ou getRange('A1');
 
 /**
  * WebApp
+ * pour définir la page à afficher lors du déploiement
  */
 function doGet(e) {
   return HtmlService.createTemplateFromFile('Formulaire').evaluate();
@@ -16,6 +20,7 @@ function include(filename) {
 
 /**
  * Exercice 1
+ * mettre la valeur 100 dans A1
  */
 function setRange() {
   range.setValue('100');
@@ -35,6 +40,7 @@ function setHeaders() {
 
 /**
  * Trigger to add menu
+ * Ajoute le menu 'Data' à l'ouverture du fichier et le sous-onglet 'Show form' qui déclenche la fonction showForm (en dessous)
  */
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Data')
@@ -44,6 +50,7 @@ function onOpen() {
 
 /**
  * Trigger to display the form
+ * fonction executée lorsqu'on clique sur le sous-menu 'Show Form'
  */
 function showForm() {
   var form = HtmlService.createTemplateFromFile('Formulaire').evaluate();
@@ -75,6 +82,7 @@ function processForm(form) {
 
 /**
  * Add sheet 'Data'
+ * crée l'onglet Data
  */
 function addSheet() {
   ss.insertSheet('Data'); // devient la nouvelle page active
